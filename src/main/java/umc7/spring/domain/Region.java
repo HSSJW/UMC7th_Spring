@@ -1,9 +1,6 @@
 package umc7.spring.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 import umc7.spring.domain.common.BaseEntity;
 
@@ -16,7 +13,10 @@ public class Region extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="region_id")
     private Long id;
+
+
 
     private String name;
 }

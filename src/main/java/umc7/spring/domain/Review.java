@@ -13,13 +13,18 @@ public class Review extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "review_id")
     private Long id;
 
-    private String title;
+    private String body;
 
     private Float score;
 
     @ManyToOne
     @JoinColumn(name = "member_id") // 외래 키 컬럼명을 "member_id"로 지정
     private Member member;
+
+    @ManyToOne (fetch = FetchType.LAZY)
+    @JoinColumn(name = "store_id")
+    private Store store;
 }
