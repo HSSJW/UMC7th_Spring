@@ -13,7 +13,6 @@ public class Region extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="region_id")
     private Long id;
 
 

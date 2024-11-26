@@ -10,7 +10,8 @@ import umc7.spring.service.StoreService.StoreQueryService;
 
 @SpringBootApplication
 @EnableJpaAuditing
-public class StudyApplication {
+public class
+StudyApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(StudyApplication.class, args);

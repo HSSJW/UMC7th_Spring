@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import umc7.spring.apiPayload.code.status.ErrorStatus;
 import umc7.spring.apiPayload.exception.handler.TempHandler;
 
-@Service
+@Service("tempQueryServiceImpl")
 @RequiredArgsConstructor
 public class TempQueryServiceImpl implements TempQueryService{
 

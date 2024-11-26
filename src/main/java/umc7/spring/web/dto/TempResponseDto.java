@@ -5,14 +5,14 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-public class TempResponse {
+public class TempResponseDto {
 
     //success
     @Builder
     @Getter
     @NoArgsConstructor
     @AllArgsConstructor
-    public static class TempTestDTO{
+    public static class TempTestDto{
         String testString;
     }
 
@@ -21,7 +21,7 @@ public class TempResponse {
     @Getter
     @NoArgsConstructor
     @AllArgsConstructor
-    public static class TempExceptionDTO{
+    public static class TempExceptionDto{
         Integer flag;
     }
 }

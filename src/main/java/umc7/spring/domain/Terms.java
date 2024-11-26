@@ -17,7 +17,7 @@ public class Terms extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "terms_id")
+
     private Long id;
 
     @Column(nullable = false, length = 20)
