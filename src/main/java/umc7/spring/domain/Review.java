@@ -17,6 +17,8 @@ public class Review extends BaseEntity {
 
     private String body;
 
+    private String content;
+
     private Float score;
 
     @ManyToOne

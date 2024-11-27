@@ -26,6 +26,8 @@ public class QReview extends EntityPathBase<Review> {
 
     public final StringPath body = createString("body");
 
+    public final StringPath content = createString("content");
+
     //inherited
     public final DateTimePath<java.time.LocalDateTime> createdAt = _super.createdAt;
 
