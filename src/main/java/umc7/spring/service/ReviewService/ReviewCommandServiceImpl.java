@@ -13,7 +13,7 @@ import umc7.spring.domain.Store;
 import umc7.spring.repository.MemberRepository.MemberRepository;
 import umc7.spring.repository.ReviewRepository.ReviewRepository;
 import umc7.spring.repository.StoreRepository.StoreRepository;
-import umc7.spring.web.dto.ReviewRequestDto;
+import umc7.spring.web.dto.ReviewDto.ReviewRequestDto;
 
 @Service
 @Transactional(readOnly = true)

@@ -24,6 +24,8 @@ public class QMission extends EntityPathBase<Mission> {
 
     public final umc7.spring.domain.common.QBaseEntity _super = new umc7.spring.domain.common.QBaseEntity(this);
 
+    public final StringPath content = createString("content");
+
     //inherited
     public final DateTimePath<java.time.LocalDateTime> createdAt = _super.createdAt;
 
@@ -32,8 +34,6 @@ public class QMission extends EntityPathBase<Mission> {
     public final NumberPath<Long> id = createNumber("id", Long.class);
 
     public final ListPath<umc7.spring.domain.mapping.MemberMission, umc7.spring.domain.mapping.QMemberMission> memberMissionList = this.<umc7.spring.domain.mapping.MemberMission, umc7.spring.domain.mapping.QMemberMission>createList("memberMissionList", umc7.spring.domain.mapping.MemberMission.class, umc7.spring.domain.mapping.QMemberMission.class, PathInits.DIRECT2);
-
-    public final StringPath missionSpec = createString("missionSpec");
 
     public final NumberPath<Integer> reward = createNumber("reward", Integer.class);
 

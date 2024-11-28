@@ -1,4 +1,4 @@
-package umc7.spring.web.dto;
+package umc7.spring.web.dto.ReviewDto;
 
 import lombok.*;
 import umc7.spring.domain.Review;

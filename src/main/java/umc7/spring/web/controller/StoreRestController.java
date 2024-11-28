@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.*;
 import umc7.spring.apiPayload.ApiResponse;
 import umc7.spring.service.ReviewService.ReviewCommandService;
 import umc7.spring.validation.annotation.ExistStore;
-import umc7.spring.web.dto.ReviewRequestDto;
-import umc7.spring.web.dto.ReviewResponseDto;
+import umc7.spring.web.dto.ReviewDto.ReviewRequestDto;
+import umc7.spring.web.dto.ReviewDto.ReviewResponseDto;
 
 @Tag(name="Store", description = "상점리뷰 관련 API")
 @Validated
