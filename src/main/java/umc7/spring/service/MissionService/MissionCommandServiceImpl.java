@@ -2,9 +2,14 @@ package umc7.spring.service.MissionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import umc7.spring.converter.MemberMissionConverter;
 import umc7.spring.converter.MissionConverter;
+import umc7.spring.domain.Member;
 import umc7.spring.domain.Mission;
 import umc7.spring.domain.Store;
+import umc7.spring.domain.mapping.MemberMission;
+import umc7.spring.repository.MemberMissionRepository.MemberMissionRepository;
+import umc7.spring.repository.MemberRepository.MemberRepository;
 import umc7.spring.repository.MissionRepository.MissionRepository;
 import umc7.spring.repository.StoreRepository.StoreRepository;
 import umc7.spring.web.dto.MissionDto.MissionRequestDto;
@@ -17,6 +22,8 @@ public class MissionCommandServiceImpl implements MissionCommandService {
 
     private final MissionRepository missionRepository; //Mission의 데이터베이스에 접근하기위함
     private final StoreRepository storeRepository; //storeId를 바탕으로
+    private final MemberRepository memberRepository;
+    private final MemberMissionRepository memberMissionRepository;
 
     @Override
     @Transactional //이 매서드는 쓰기/읽기 모두 가능하다
@@ -27,5 +34,16 @@ public class MissionCommandServiceImpl implements MissionCommandService {
         return  missionRepository.save(newMission); //save 함수는 INSERT or UPDATE기능으로 retrun값으로 해당 엔티티를 반환한다.
     }
 
+
+    @Override
+    @Transactional
+    public MemberMission addChallenge(Long missionId, Long memberId){
+        Member member = memberRepository.findById(memberId).get();
+        Mission mission = missionRepository.findById(memberId).get();
+        MemberMission memberMission = MemberMissionConverter.toMissionChallenge(member, mission);
+
+
+        return  memberMissionRepository.save(memberMission);
+    }
 
 }
