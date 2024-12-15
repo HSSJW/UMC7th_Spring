@@ -3,6 +3,7 @@ package umc7.spring.web.controller;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;
+import io.swagger.v3.oas.annotations.enums.ParameterIn;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -42,9 +43,8 @@ public class StoreRestController {
         return ApiResponse.onSuccess(new ReviewResponseDto(reviewCommandService.createReview(request, storeId, memberId)));
     }
 
+    //-----------------------------------------------------------------------------------------------
     private final StoreQueryService storeQueryService;
-
-
 
     @GetMapping("/{storeId}/reviews")
     @Operation(summary = "특정 가게의 리뷰 목록 조회 API",description = "특정 가게의 리뷰들의 목록을 조회하는 API이며, 페이징을 포함합니다. query String 으로 page 번호를 주세요")
@@ -60,12 +60,35 @@ public class StoreRestController {
     })
 
     public ApiResponse<StoreResponseDTO.ReviewPreViewListDTO> //조회결과를 이DTO에서 나온 형태로 맵핑
-    getReviewList(@ExistStore @PathVariable(name = "storeId") Long storeId, @RequestParam(name = "page") Integer page){ //ExistStore : storeId 유효성 검증
-        System.out.println("-----------" + storeId + "페이지:" + page);
+    getReviewList(
+            @ExistStore @PathVariable(name = "storeId") Long storeId,
+            @RequestParam(name = "page") Integer page
+    ){
+        //ExistStore : storeId 유효성 검증
+//        System.out.println("-----------" + storeId + "페이지:" + page);
         Page<Review>  reviewList = storeQueryService.getReviewList(storeId, page); //storeId와 page수를 전달하고 리뷰 리스트 받아옴
         
         //Converter에 맞게 만들어줌
         return ApiResponse.onSuccess(StoreConverter.reviewPreViewListDTO(reviewList));
+    }
+
+
+    @GetMapping("/{storeId}/myReviews")
+    @Operation(
+            summary = "특정가게에서 자신이 작성한 리뷰목록",
+            description = "aa"
+    )
+    @Parameter(name = "storeId", description = "가게id", example = "1", in = ParameterIn.PATH)
+    @Parameter(name = "userId", description = "사용자id", example = "1", in = ParameterIn.QUERY)
+    @Parameter(name = "page", description = "페이지", example = "1", in = ParameterIn.QUERY)
+    public ApiResponse<StoreResponseDTO.ReviewPreViewListDTO> getMyReviewList(
+            @ExistStore @PathVariable(name = "storeId") Long storeId,
+            @RequestParam(name = "userId") Long memberId,
+            @RequestParam(name = "page") Integer page
+    ){
+        Page<Review> myReviewList = storeQueryService.getMyReviewList(storeId, memberId, page-1); //자신이 작성한 리뷰만 페이지형태로 받아오기
+
+        return ApiResponse.onSuccess(StoreConverter.reviewPreViewListDTO(myReviewList));
     }
 
 }

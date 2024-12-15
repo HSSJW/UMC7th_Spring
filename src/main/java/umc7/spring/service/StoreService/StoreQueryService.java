@@ -15,4 +15,6 @@ public interface StoreQueryService {
     public boolean storeExist(Long storeId);
 
     Page<Review> getReviewList(Long StoreId, Integer page); //특정 가게 리뷰 목록 조회
+
+    Page<Review> getMyReviewList(Long StoreId, Long userId ,Integer page);
 }

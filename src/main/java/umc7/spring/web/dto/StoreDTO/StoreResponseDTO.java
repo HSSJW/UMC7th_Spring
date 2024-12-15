@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import javax.swing.*;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -17,7 +18,7 @@ public class StoreResponseDTO {
         List<ReviewPreViewDTO> reviewList; //리뷰프리뷰객체의 리스트
         Integer listSize; //리스트 카드 개수
         Integer totalPage;
-        Long totalElemnets;
+        Long totalElements;
         Boolean isFirst;
         Boolean isLast;
     }
@@ -30,6 +31,7 @@ public class StoreResponseDTO {
     public static class ReviewPreViewDTO {
         String ownerNickname;
         Float score;
+        String content;
         String body;
         LocalDate createdAt;
     }

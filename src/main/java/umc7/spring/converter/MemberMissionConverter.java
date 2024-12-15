@@ -11,7 +11,7 @@ public class MemberMissionConverter {
         return MemberMission.builder()
                 .member(member)
                 .mission(mission)
-                .status(MissionStatus.CHALLENGING)
+                .status(MissionStatus.CHALLENGIN)
                 .build();
     }
 }

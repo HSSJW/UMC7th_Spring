@@ -18,7 +18,7 @@ public class MissionChallengeResponseDto {
         this.missionContent = memberMission.getMission().getContent();
         this.missionReward = memberMission.getMission().getReward();
         // MissionStatus를 Boolean 값으로 변환
-        this.status = memberMission.getStatus() == MissionStatus.CHALLENGING;
+        this.status = memberMission.getStatus() == MissionStatus.CHALLENGIN;
     }
 
 }

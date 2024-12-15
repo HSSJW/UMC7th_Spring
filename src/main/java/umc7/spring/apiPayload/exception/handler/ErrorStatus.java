@@ -2,7 +2,8 @@ package umc7.spring.apiPayload.exception.handler;
 
 public enum ErrorStatus {
     FOOD_CATEGORY_NOT_FOUND("E001", "Food category not found"),
-    MEMBER_NOT_FOUND("E002", "Member not found");
+    MEMBER_NOT_FOUND("E002", "Member not found"),
+    PAGE_LAW_NUMBER("E003", "TOO LAW PAGE NUMBER");
 
     private final String code;
     private final String message;

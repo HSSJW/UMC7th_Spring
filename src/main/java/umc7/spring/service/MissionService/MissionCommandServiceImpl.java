@@ -7,12 +7,15 @@ import umc7.spring.converter.MissionConverter;
 import umc7.spring.domain.Member;
 import umc7.spring.domain.Mission;
 import umc7.spring.domain.Store;
+import umc7.spring.domain.enums.MissionStatus;
 import umc7.spring.domain.mapping.MemberMission;
 import umc7.spring.repository.MemberMissionRepository.MemberMissionRepository;
 import umc7.spring.repository.MemberRepository.MemberRepository;
 import umc7.spring.repository.MissionRepository.MissionRepository;
 import umc7.spring.repository.StoreRepository.StoreRepository;
 import umc7.spring.web.dto.MissionDto.MissionRequestDto;
+
+import java.util.Optional;
 
 
 @Service
@@ -46,4 +49,29 @@ public class MissionCommandServiceImpl implements MissionCommandService {
         return  memberMissionRepository.save(memberMission);
     }
 
+
+    //미션완료시키는기능
+    @Override
+    @Transactional
+    public void completeMission(Long missionId, Long memberId) {
+        //MemberMission 조회
+        MemberMission memberMission = memberMissionRepository.findByMissionIdAndMemberId(missionId, memberId);
+
+        //CHALLENGING인지 확인
+        if (memberMission.getStatus() != MissionStatus.CHALLENGIN) {
+            return;
+        }
+
+        //COMPLETE로 변경
+        memberMission.setStatus(MissionStatus.COMPLETE);
+
+
+        //포인트 증가
+        Member member = memberMission.getMember();
+        member.setPoint(member.getPoint() + memberMission.getMission().getReward());// reward 추가
+        memberRepository.save(member); // MemberRepository를 사용하여 저장
+
+        //MemberMission 저장
+        memberMissionRepository.save(memberMission);
+    }
 }
