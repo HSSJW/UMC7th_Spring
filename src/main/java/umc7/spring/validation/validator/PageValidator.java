@@ -8,7 +8,9 @@ import umc7.spring.validation.annotation.CheckPage;
 public class PageValidator implements ConstraintValidator<CheckPage, Integer> {
 
     @Override
-    public void initialize(CheckPage constraintAnnotation) {}
+    public void initialize(CheckPage constraintAnnotation) {
+        ConstraintValidator.super.initialize(constraintAnnotation);
+    }
 
     private boolean isValid;
 
