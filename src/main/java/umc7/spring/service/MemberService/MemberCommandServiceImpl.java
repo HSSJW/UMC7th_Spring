@@ -39,6 +39,7 @@ public class MemberCommandServiceImpl implements MemberCommandService{
 
         memberPreferList.forEach(memberPrefer -> {memberPrefer.setMember(newMember);});
 
+
         return memberRepository.save(newMember);
     }
 }

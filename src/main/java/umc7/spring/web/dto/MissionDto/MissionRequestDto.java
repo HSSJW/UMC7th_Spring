@@ -27,6 +27,8 @@ public class MissionRequestDto {
     @Schema(description = "미션 마감 날짜", example = "2024-04-14", type="string")
     private LocalDate deadline;
 
+
+
     @NotNull(message = "미션 성공시 지급되는 포인트 금액은 필수 입력항목입니다.")
     @Schema(description = "포인트", example = "500", type = "int")
     private Integer reward;
